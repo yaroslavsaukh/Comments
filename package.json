@@ -24,6 +24,7 @@
     "sequelize": "^6.33.0",
     "sequelize-hierarchy": "^2.0.4",
     "sharp": "^0.32.6",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "yarn": "^1.22.19"
   }
 }

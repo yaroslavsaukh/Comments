@@ -18,7 +18,7 @@ class commentsController {
   async commentsList(req, res, next) {
     try {
       const { limit, offset } = req.query
-      const list = await commentsService.getListComments(req.query)
+      const list = await commentsService.getListComments({ limit, offset })
       return res.status(200).json({ list })
     } catch (e) {
       next(e)
