@@ -1,7 +1,5 @@
 import createHttpError from 'http-errors'
 import jwt from 'jsonwebtoken'
-import Roles from '../db/models/roles'
-import { userStatus } from '../enums/index.js'
 
 export default (req, _, next) => {
   try {
@@ -22,14 +20,6 @@ export default (req, _, next) => {
         } else {
           console.log(err.name)
           return next(createHttpError(401, 'Invalid token'))
-        }
-      }
-      if (user.status === userStatus.BLOCKED)
-        return next(createHttpError(401, 'User blocked'))
-      if (req.baseUrl.includes('/admin-api')) {
-        const adminRole = await Roles.findOne({ name: 'ADMIN' })
-        if (adminRole && user.role !== String(adminRole._id)) {
-          return next(createHttpError(403, 'User is not admin'))
         }
       }
       req.user = user

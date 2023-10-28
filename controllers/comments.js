@@ -3,11 +3,12 @@ import commentsService from '../services/comments.js'
 class commentsController {
   async createComment(req, res, next) {
     try {
-      const { body, parentId, author } = req.body
+      const { id } = req.user
+      const { text, parentId } = req.body
       const comment = await commentsService.createNewComment({
-        body,
+        text,
         parentId,
-        author,
+        UserId: id,
       })
       return res.status(200).json({ comment })
     } catch (e) {
@@ -16,7 +17,8 @@ class commentsController {
   }
   async commentsList(req, res, next) {
     try {
-      const list = await commentsService.getTestList()
+      const { limit, offset } = req.query
+      const list = await commentsService.getListComments(req.query)
       return res.status(200).json({ list })
     } catch (e) {
       next(e)

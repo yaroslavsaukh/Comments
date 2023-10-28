@@ -1,6 +1,7 @@
 node_modules
 .env
 .idea
+public
 .DS_Store
 builds/*/*
 uploads/*/*
@@ -8,3 +9,4 @@ uploads/*/*
 *.jpeg
 *.png
 *.svg
+*.sqlite3

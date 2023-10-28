@@ -1,5 +1,4 @@
 import { Sequelize, DataTypes } from 'sequelize'
-import generate_id from '../utils/generate-id.js'
 
 const sequelize = new Sequelize({ dialect: 'sqlite', storage: 'db.sqlite3' })
 
@@ -22,30 +21,23 @@ const User = sequelize.define('User', {
   },
 })
 
-const comments = sequelize.define('Comment', {
-  author_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  comment_text: {
+const Comments = sequelize.define('Comment', {
+  text: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  parent_comment_id: {
+  parentId: {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  // authorId: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  // },
 })
 
-// Устанавливаем самоссылочное отношение "hasMany" для модели Comment
-comments.hasMany(comments, {
-  as: 'replies',
-  foreignKey: 'parent_comment_id',
-  onDelete: 'cascade',
-})
-
-User.hasMany(comments, { as: 'comments', foreignKey: 'author_id' })
-// comments.belongsTo(User, { foreignKey: 'author_id' })
+User.hasMany(Comments, { onDelete: 'CASCADE', as: 'author' })
+Comments.belongsTo(User)
 
 await sequelize.sync()
-export { comments, User, sequelize }
+export { Comments, User }
