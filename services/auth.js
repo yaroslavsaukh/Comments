@@ -1,5 +1,5 @@
 import createHttpError from 'http-errors'
-import { saveImage } from './image-save.js'
+import { imageSave } from './image-save.js'
 import { User } from '../db/models/models.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -20,7 +20,7 @@ class authService {
       if (data.avatar === null) {
         filename = null
       } else {
-        filename = await saveImage(data.avatar)
+        filename = await imageSave(data.avatar)
       }
       const { username, email, password } = data
       const passwordRegex =
