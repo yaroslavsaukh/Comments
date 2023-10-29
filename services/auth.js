@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors'
 import { imageSave } from './image-save.js'
-import { User } from '../db/models/models.js'
+import User from '../db/models/user.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 

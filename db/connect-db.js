@@ -1,14 +1,14 @@
 import { Sequelize } from 'sequelize'
 
-export const connectDB = async () => {
-  try {
-    const sequelize = new Sequelize({
-      dialect: 'sqlite',
-      storage: 'db.sqlite3',
-    })
-    console.log('Database was successfully connected.')
-    return sequelize
-  } catch (error) {
-    console.error(error)
-  }
+let sequelize
+try {
+  sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: 'db.sqlite3',
+    logging: false,
+  })
+  console.log('Database was successfully connected.')
+} catch (e) {
+  console.error(e)
 }
+export default sequelize

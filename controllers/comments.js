@@ -17,9 +17,14 @@ class commentsController {
   }
   async commentsList(req, res, next) {
     try {
-      const { limit, offset } = req.query
-      const list = await commentsService.getListComments({ limit, offset })
-      return res.status(200).json({ list })
+      const { limit, offset, sortBy, sortOrder } = req.query
+      const list = await commentsService.getListComments({
+        limit,
+        offset,
+        sortBy,
+        sortOrder,
+      })
+      return res.status(200).json(list)
     } catch (e) {
       next(e)
     }
@@ -29,7 +34,7 @@ class commentsController {
     try {
       const { id } = req.params
       const comment = await commentsService.getCommentByID(id)
-      return res.status(200).json({ comment })
+      return res.status(200).json(comment)
     } catch (e) {
       next(e)
     }
