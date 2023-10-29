@@ -1,6 +1,7 @@
 import Comments from '../db/models/comment.js'
 import User from '../db/models/user.js'
 import createHttpError from 'http-errors'
+import NodeCache from 'node-cache'
 
 class commentsService {
   async createNewComment(data) {
@@ -24,10 +25,7 @@ class commentsService {
         include: [{ model: User, attributes: { exclude: ['password'] } }],
         limit: limit || 25,
         offset: offset * limit || 0,
-        order: [
-          [sortBy || 'id', sortOrder || 'ASC'],
-          ['User', sortBy || 'id', sortOrder || 'ASC'],
-        ],
+        order: [[sortBy || 'id', sortOrder || 'ASC']],
       })
       return list
     } catch (e) {
