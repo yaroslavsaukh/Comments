@@ -19,13 +19,15 @@ class commentsService {
     try {
       const { limit, offset, sortBy, sortOrder } = data
       const order = []
-      if (
-        typeof sortBy === 'string' &&
-        (sortOrder === 'ASC' || sortOrder === 'DESC')
-      ) {
-        order.push([sortBy || 'id', sortOrder || 'ASC'])
-      } else {
-        throw createHttpError(500, `Incorrect parameter`)
+      if (sortBy && sortOrder) {
+        if (
+          typeof sortBy === 'string' &&
+          (sortOrder === 'ASC' || sortOrder === 'DESC')
+        ) {
+          order.push([sortBy || 'id', sortOrder || 'ASC'])
+        } else {
+          throw createHttpError(500, `Incorrect parameter`)
+        }
       }
       const list = await Comments.findAndCountAll({
         where: { parentId: null },
