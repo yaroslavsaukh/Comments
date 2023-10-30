@@ -16,6 +16,7 @@ export const imageSave = async (file) => {
   if (file.size >= 16777216) {
     throw createHttpError(400, 'Image size must be lower than 16MB')
   }
+  if (!fs.existsSync('public/avatars')) fs.mkdirSync('public/avatars')
   const maxWidth = 320
   const maxHeight = 240
   const uploadPath = 'public/avatars'
