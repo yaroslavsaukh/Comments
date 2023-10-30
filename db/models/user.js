@@ -20,12 +20,12 @@ const User = sequelize.define('User', {
     allowNull: true,
   },
 })
-
-User.hasMany(Comments, { onDelete: 'CASCADE', as: 'author' })
+User.hasMany(Comments, { onDelete: 'CASCADE' })
 Comments.belongsTo(User)
 try {
-  await sequelize.sync()
-  console.log('User model synced')
+  await User.sync()
+  await Comments.sync()
+  console.log('Models synced')
 } catch (e) {
   console.log(e)
 }

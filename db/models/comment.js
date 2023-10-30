@@ -11,11 +11,5 @@ const Comments = sequelize.define('Comment', {
     allowNull: true,
   },
 })
-try {
-  await sequelize.sync()
-  console.log('Comments model synced')
-} catch (e) {
-  console.log(e)
-}
 
 export default Comments

@@ -1,7 +1,6 @@
 import Comments from '../db/models/comment.js'
 import User from '../db/models/user.js'
 import createHttpError from 'http-errors'
-import NodeCache from 'node-cache'
 
 class commentsService {
   async createNewComment(data) {
@@ -19,39 +18,29 @@ class commentsService {
   async getListComments(data) {
     try {
       const { limit, offset, sortBy, sortOrder } = data
+      const order = []
+      if (
+        typeof sortBy === 'string' &&
+        (sortOrder === 'ASC' || sortOrder === 'DESC')
+      ) {
+        order.push([sortBy || 'id', sortOrder || 'ASC'])
+      } else {
+        throw createHttpError(500, `Incorrect parameter`)
+      }
       const list = await Comments.findAndCountAll({
         where: { parentId: null },
         attributes: { exclude: ['UserId'] },
-        include: [{ model: User, attributes: { exclude: ['password'] } }],
+        include: [
+          {
+            model: User,
+            attributes: { exclude: ['password'] },
+          },
+        ],
         limit: limit || 25,
         offset: offset * limit || 0,
-        order: [[sortBy || 'id', sortOrder || 'ASC']],
+        order: order,
       })
       return list
-    } catch (e) {
-      throw createHttpError(500, e)
-    }
-  }
-
-  async getTestList() {
-    try {
-      const comments = await Comments.findAll({ include: 'User' })
-      const commentTree = []
-
-      const buildCommentTree = (parentId) => {
-        const node = comments.filter((comment) => comment.parentId === parentId)
-        if (node.length === 0) {
-          return []
-        }
-        return node.map((item) => ({
-          ...item.toJSON(),
-          children: buildCommentTree(item.id),
-        }))
-      }
-
-      commentTree.push(...buildCommentTree(null))
-
-      return commentTree
     } catch (e) {
       throw createHttpError(500, e)
     }
