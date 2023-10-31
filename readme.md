@@ -24,3 +24,11 @@ Like that
     "user": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dHR0dCIsImVtYWlsIjoidGVzdHR0dHRnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIzLTEwLTMwVDE3OjU0OjE0LjAzNVoiLCJpYXQiOjE2OTg2ODg0NTQsImV4cCI6MTY5ODc3NDg1NH0.3v7232cx0hCwU8xtRlZM_6H8y8e3l151jVzqaKazp6E"
 }
 ```
+
+In order to add a comment you need to go to the route
+
+    /api/comments/create
+here is fiels that nedd to be sended
+![comment_creation](examples/comment_creation.png)
+
+To create a header comment you do not need to pass the parentId field
