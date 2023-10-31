@@ -11,4 +11,4 @@ Here are examples of parameters that are passed to
 
 register
 
-    ![register params example](https://github.com/yaroslavsaukh/Comments/assets/91947173/1aaa126b-e7a8-45e3-a634-9c245b7bb63c)
+    ![register params example](/examples/registration.png)
