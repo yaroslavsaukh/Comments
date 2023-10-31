@@ -11,4 +11,4 @@ Here are examples of parameters that are passed to
 
 register
 
-    ![register params example](/examples/registration.png)
+    ![register params example](examples/registration.png)
