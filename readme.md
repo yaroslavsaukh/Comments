@@ -59,3 +59,15 @@ If you added the parentId field you will get
 }
 ```
 
+To get list of comments you need to send GET request request to the route
+
+    /api/comments/list
+
+Also you can add some query parameters
+
+![list](examples/list.png)
+
+To get onle yone comment you need to send GEt request to the route
+
+    /api/comments/:id
+In this route :id is an Id of header comment
