@@ -11,4 +11,16 @@ Here are examples of parameters that are passed to
 
 register
 
-    ![register params example](examples/registration.png)
+![register](examples/registration.png)
+
+login
+![login](examples/login.png)
+
+In both routes, as a result, you will receive a JWT token for the ability to receive information and also add a comment.
+
+Like that
+```
+{
+    "user": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dHR0dCIsImVtYWlsIjoidGVzdHR0dHRnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIzLTEwLTMwVDE3OjU0OjE0LjAzNVoiLCJpYXQiOjE2OTg2ODg0NTQsImV4cCI6MTY5ODc3NDg1NH0.3v7232cx0hCwU8xtRlZM_6H8y8e3l151jVzqaKazp6E"
+}
+```
