@@ -31,4 +31,44 @@ In order to add a comment you need to go to the route
 here is fiels that nedd to be sended
 ![comment_creation](examples/comment_creation.png)
 
+
 To create a header comment you do not need to pass the parentId field
+
+As a result you will get JSON object wit your comment
+```
+{
+    "comment": {
+        "id": 8,
+        "text": "gi",
+        "UserId": 1,
+        "updatedAt": "2023-10-30T17:56:43.671Z",
+        "createdAt": "2023-10-30T17:56:43.671Z"
+    }
+}
+```
+If you added the parentId field you will get
+```
+{
+    "comment": {
+        "id": 9,
+        "text": "gi",
+        "parentId": "4",
+        "UserId": 1,
+        "updatedAt": "2023-10-31T11:41:24.940Z",
+        "createdAt": "2023-10-31T11:41:24.940Z"
+    }
+}
+```
+
+To get list of comments you need to send GET request request to the route
+
+    /api/comments/list
+
+Also you can add some query parameters
+
+![list](examples/list.png)
+
+To get onle yone comment you need to send GEt request to the route
+
+    /api/comments/:id
+In this route :id is an Id of header comment
