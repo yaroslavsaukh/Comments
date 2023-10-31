@@ -1,6 +1,6 @@
 This is a simple comment project written using express.js. In it you can create captioned comments and leave an unlimited number of comments on them. You can also leave replies to replies with an unlimited level of nesting. In order to leave a comment, you must first register or log in.
 
-Here are the routes for registration 
+Here are the routes for registration
 
     /api/auth/register
 and login
@@ -11,4 +11,24 @@ Here are examples of parameters that are passed to
 
 register
 
-    ![register params example](https://github.com/yaroslavsaukh/Comments/assets/91947173/1aaa126b-e7a8-45e3-a634-9c245b7bb63c)
+![register](examples/registration.png)
+
+login
+![login](examples/login.png)
+
+In both routes, as a result, you will receive a JWT token for the ability to receive information and also add a comment.
+
+Like that
+```
+{
+    "user": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dHR0dCIsImVtYWlsIjoidGVzdHR0dHRnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIzLTEwLTMwVDE3OjU0OjE0LjAzNVoiLCJpYXQiOjE2OTg2ODg0NTQsImV4cCI6MTY5ODc3NDg1NH0.3v7232cx0hCwU8xtRlZM_6H8y8e3l151jVzqaKazp6E"
+}
+```
+
+In order to add a comment you need to go to the route
+
+    /api/comments/create
+here is fiels that nedd to be sended
+![comment_creation](examples/comment_creation.png)
+
+To create a header comment you do not need to pass the parentId field
