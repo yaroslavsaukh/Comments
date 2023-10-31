@@ -72,3 +72,25 @@ To get onle yone comment you need to send GEt request to the route
 
     /api/comments/:id
 In this route :id is an Id of header comment
+
+Alo you can get information about you through the route
+
+    /api/user/self
+All you need to add is an authorization header
+
+In the responce you will recieve something like this
+
+```
+{
+    "id": 1,
+    "username": "testtt",
+    "email": "testtt@gmail.com",
+    "avatar": "avatars/1698598128275rP0ChoKVtxLDmYd9jHjjYBnH.jpg",
+    "createdAt": "2023-10-29T16:48:48.365Z",
+    "updatedAt": "2023-10-29T16:48:48.365Z"
+}
+```
+
+You can test all this routes via the deployed version of this application through the link
+
+[https://comments-test-2d55759eb36c.herokuapp.com](https://comments-test-2d55759eb36c.herokuapp.com)
