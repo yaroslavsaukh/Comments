@@ -1,4 +1,4 @@
-This is a simple comment project written using express.js. In it you can create captioned comments and leave an unlimited number of comments on them. You can also leave replies to replies with an unlimited level of nesting. In order to leave a comment, you must first register or log in.
+This is a simple comment project written using express.js. In it, you can create captioned comments and leave an unlimited number of comments on them. You can also leave replies to replies with an unlimited level of nesting. In order to leave a comment, you must first register or log in.
 
 Here are the routes for registration
 
@@ -28,7 +28,7 @@ Like that
 In order to add a comment you need to go to the route
 
     /api/comments/create
-here is fiels that nedd to be sended
+here is fields that need to be sent
 ![comment_creation](examples/comment_creation.png)
 
 
@@ -60,25 +60,25 @@ If you added the parentId field you will get
 }
 ```
 
-To get list of comments you need to send GET request request to the route
+To get list of comments you need to send GET request to the route
 
     /api/comments/list
 
-Also you can add some query parameters
+Also, you can add some query parameters
 
 ![list](examples/list.png)
 
-To get onle yone comment you need to send GEt request to the route
+To get only one comment you need to send GET request to the route
 
     /api/comments/:id
-In this route :id is an Id of header comment
+In this route **:id** is an Id of header comment
 
 Alo you can get information about you through the route
 
     /api/user/self
 All you need to add is an authorization header
 
-In the responce you will recieve something like this
+In the response you will receive something like this
 
 ```
 {
@@ -94,3 +94,13 @@ In the responce you will recieve something like this
 You can test all this routes via the deployed version of this application through the link
 
 [https://comments-test-2d55759eb36c.herokuapp.com](https://comments-test-2d55759eb36c.herokuapp.com)
+
+Also, you can download **comments.tar** file. It contains docker image of this application. After downloading tou should run this command:
+
+    docker load --input comments.tar
+
+Then you should run something like this:
+
+    docker run -p 4000:4000 --name comments-task-try comments-task:1.0.0
+
+By doing this you can run this application locally on **localhost:4000**
