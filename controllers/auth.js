@@ -10,8 +10,8 @@ class authController {
       }
       const { username, email, password } = req.body
       const data = { username, email, password, avatar }
-      const user = await authService.createUser(data)
-      return res.status(200).json({ user })
+      const user_token = await authService.createUser(data)
+      return res.status(200).json({ user_token })
     } catch (error) {
       next(error)
     }
