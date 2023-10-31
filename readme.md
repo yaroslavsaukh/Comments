@@ -33,4 +33,29 @@ here is fiels that nedd to be sended
 
 To create a header comment you do not need to pass the parentId field
 
+As a result you will get JSON object wit your comment
+```
+{
+    "comment": {
+        "id": 8,
+        "text": "gi",
+        "UserId": 1,
+        "updatedAt": "2023-10-30T17:56:43.671Z",
+        "createdAt": "2023-10-30T17:56:43.671Z"
+    }
+}
+```
+If you added the parentId field you will get
+```
+{
+    "comment": {
+        "id": 9,
+        "text": "gi",
+        "parentId": "4",
+        "UserId": 1,
+        "updatedAt": "2023-10-31T11:41:24.940Z",
+        "createdAt": "2023-10-31T11:41:24.940Z"
+    }
+}
+```
 
